@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'history',
     component: HistoryComponent,
   },
+
   {
     path: '**',
     component: HomeComponent,

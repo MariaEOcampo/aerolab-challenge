@@ -1,9 +1,17 @@
 <app-header></app-header>
 <div class="buttons-container">
-  <span>Sort by</span>
-  <button class="btn" (click)="showMostrecent()">Most recent</button>
-  <button class="btn" (click)="sortByLowest()">Lowest price</button>
-  <button class="btn" (click)="sortByHighest()">Highest price</button>
+  <div>
+    <span>Sort by</span>
+    <button class="btn" (click)="showMostrecent()">Most recent</button>
+    <button class="btn" (click)="sortByLowest()">Lowest price</button>
+    <button class="btn" (click)="sortByHighest()">Highest price</button>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="openPointsModal()">
+      Get Points!
+    </button>
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <div class="card-container">
   <div class="mt-5 mx-2" *ngFor="let product of products">

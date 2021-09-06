@@ -1,0 +1,17 @@
+<div>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+    (click)="hideModal()"
+  ></button>
+  <h2>Get more points now, pay by card later</h2>
+  <button
+    class="btn"
+    (click)="getCoins(value)"
+    *ngFor="let value of pointsToBuy"
+  >
+    {{ value }}<span><img src="./assets/coin.svg" alt="" /></span>
+  </button>
+</div>

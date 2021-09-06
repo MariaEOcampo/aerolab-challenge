@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
 import { IntegrationService } from '../../services/integration.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { PointsModalComponent } from '../../components/points-modal/points-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +13,13 @@ import { IntegrationService } from '../../services/integration.service';
 })
 export class HomeComponent implements OnInit {
   public products: Product[] = [];
+  public pointsToBuy: number[] = [1000, 5000, 7500];
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private modalService: BsModalService,
+    public bsModalRef: BsModalRef
+  ) {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((productsResponse) => {
@@ -22,14 +29,32 @@ export class HomeComponent implements OnInit {
   }
 
   showMostrecent() {
-    console.log('recent');
+    this.productsService.getProducts().subscribe((productsResponse) => {
+      this.products = productsResponse;
+      console.log(this.products);
+    });
   }
 
   sortByLowest() {
+    const productsLowest = this.products
+      .filter((product) => product.cost)
+      .sort((cost1, cost2) => cost1.cost - cost2.cost);
+    this.products = productsLowest;
     console.log('lowest');
   }
 
   sortByHighest() {
-    console.log('highest');
+    const productsLowest = this.products
+      .filter((product) => product.cost)
+      .sort((cost1, cost2) => cost2.cost - cost1.cost);
+    this.products = productsLowest;
+  }
+
+  openPointsModal() {
+    this.bsModalRef = this.modalService.show(PointsModalComponent, {
+      initialState: {
+        pointsToBuy: this.pointsToBuy,
+      },
+    });
   }
 }

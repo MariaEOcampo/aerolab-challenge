@@ -5,3 +5,8 @@ flex-direction: row;
 flex-wrap:wrap;
 
 }
+
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+}

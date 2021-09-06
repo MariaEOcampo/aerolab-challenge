@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product.interface';
 import { IntegrationService } from 'src/app/services/integration.service';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-card',
@@ -14,12 +15,18 @@ export class CardComponent implements OnInit {
 
   private pointsToChange!: number;
 
-  constructor(private integrationService: IntegrationService) {}
+  constructor(
+    private integrationService: IntegrationService,
+    private productService: ProductsService
+  ) {}
 
   ngOnInit(): void {}
 
-  redeem(cost: number) {
+  redeem(cost: number, id: string) {
     let result;
+    let bodyPost = {
+      productId: id,
+    };
     this.userPoints$ = this.integrationService.getUserPoints$();
     this.userPoints$.subscribe((pointsResponse) => {
       this.pointsToChange = pointsResponse;
@@ -32,5 +39,8 @@ export class CardComponent implements OnInit {
       this.integrationService.emitUserPoints$(result);
       console.log(result);
     }
+    this.productService
+      .postProducts(bodyPost)
+      .subscribe((resp) => console.log(resp));
   }
 }
