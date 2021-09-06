@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { HeaderComponent } from './pages/components/header/header.component';
 import { SharedModule } from './shared/shared.module';
+import { CardComponent } from './components/card/card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,9 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     HistoryComponent,
     HeaderComponent,
+    CardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })

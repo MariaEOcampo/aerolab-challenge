@@ -1,1 +1,12 @@
 <app-header></app-header>
+<div class="buttons-container">
+  <span>Sort by</span>
+  <button class="btn" (click)="showMostrecent()">Most recent</button>
+  <button class="btn" (click)="sortByLowest()">Lowest price</button>
+  <button class="btn" (click)="sortByHighest()">Highest price</button>
+</div>
+<div class="card-container">
+  <div class="mt-5 mx-2" *ngFor="let product of products">
+    <app-card [card]="product"></app-card>
+  </div>
+</div>
