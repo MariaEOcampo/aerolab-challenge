@@ -25,14 +25,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((productsResponse) => {
       this.products = productsResponse;
-      console.log(this.products);
     });
   }
 
   showMostrecent() {
     this.productsService.getProducts().subscribe((productsResponse) => {
       this.products = productsResponse;
-      console.log(this.products);
     });
   }
 
@@ -41,7 +39,6 @@ export class HomeComponent implements OnInit {
       .filter((product) => product.cost)
       .sort((cost1, cost2) => cost1.cost - cost2.cost);
     this.products = productsLowest;
-    console.log('lowest');
   }
 
   sortByHighest() {

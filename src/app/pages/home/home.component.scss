@@ -10,6 +10,9 @@ flex-wrap:wrap;
 .buttons-container{
     display: flex;
     justify-content: space-between;
+    @media (max-width: 768px) {
+       flex-direction: column;
+      }
 }
 
 .pagination{
@@ -22,6 +25,14 @@ flex-wrap:wrap;
     border: 1px solid $light-blue;
     color:$blue;
     font-weight: 600;
+    &:hover{
+        background-color: $yellow!important;
+    }
+    @media (max-width: 768px) {
+        width: 88px;
+       }
+      
+    
 }
 
 span{
@@ -29,6 +40,11 @@ span{
     font-size: 1.4rem;
     margin-left: 3rem;
     margin-right: 1rem;
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.1rem;
+       }
 
 }
 
@@ -38,5 +54,8 @@ span{
     color:$blue;
     font-weight: 600;
     font-size: 1.6rem;
+    @media (max-width: 768px) {
+        margin-left: 69px!important;
+       }
 
 }

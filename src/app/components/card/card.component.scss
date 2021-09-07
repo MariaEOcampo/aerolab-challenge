@@ -5,6 +5,12 @@
   --curve: 40;
   display: flex;
   width: 20vw;
+  @media (max-width: 996px) {
+    width: 40vw;
+  }
+  @media (max-width: 768px) {
+    width: 90vw;
+  }
 }
 
 * {
@@ -21,6 +27,7 @@ body {
   width: 20vw;
   padding: 0;
   list-style-type: none;
+
 }
 
 .card {
@@ -29,11 +36,28 @@ body {
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
+  @media (max-width: 996px) {
+    width: 40vw;
+  }
+  @media (max-width: 768px) {
+    width: 90vw;
+  }
 }
 
 .card__image {      
-  width: 375px;
+  width: 315px;
   height: auto;
+  @media (max-width: 1200px) {
+    width: 245px;
+  }
+  @media (max-width: 996px) {
+    width: 327px;
+  }
+  @media (max-width: 768px) {
+    width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .card__overlay {

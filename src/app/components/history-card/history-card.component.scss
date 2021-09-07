@@ -1,7 +1,20 @@
 .card-history{
-    max-width:340px;
+   width:340px;
     height: 150px;
+   
 }
 
+.img-history{
+    @media (max-width: 768px) {
+        width: 175px;
+      }
+      
+}
 
-
+.card-content{
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 576px) {
+      display: flex;
+      }
+}

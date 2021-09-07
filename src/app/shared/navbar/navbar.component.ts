@@ -26,7 +26,6 @@ export class NavbarComponent implements OnInit {
         .subscribe((data) => (this.points = data));
       this.integrationService.emitUserPoints$(userResponse.points);
       this.user = userResponse;
-      console.log('navbar', this.user);
     });
   }
 }

@@ -1,14 +1,19 @@
 <div class="card mb-3 card-history">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img [src]="redeem.img.url" class="img-fluid rounded-start" alt="..." />
+  <div class="card-content">
+    <div class="col-lg-4 col-sm-6">
+      <img
+        [src]="redeem.img.url"
+        class="img-fluid rounded-start img-history"
+        alt="redeem.name"
+      />
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8 col-sm-6">
       <div class="card-body">
         <h5 class="card-title">{{ redeem.name }}</h5>
-        <p class="card-text">
+        <p class="card-text mb-1">
           {{ redeem.cost }} <span>{{ redeem.category }} </span>
         </p>
+        <span><strong>Redeem date</strong> </span>
         <p class="card-text">
           <small class="text-muted">{{
             redeem.createDate | date: "short"

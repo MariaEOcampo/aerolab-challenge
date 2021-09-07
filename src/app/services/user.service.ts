@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
+import { header } from './config/config.api';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +16,7 @@ export class UserService {
 
   getQuery(query: string) {
     const url = `${this.baseUrl}${query}`;
-    const headers = new HttpHeaders({
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTMxOWVlNWE5MDUzOTAwMjFiNzBiMjIiLCJpYXQiOjE2MzA2NDE4OTR9.axNieH2FmX1CVjccsGZTecOnfAR7oy2-5nYmy1qjmWw',
-    });
+    const headers = header;
     return this.http.get(url, { headers });
   }
 

@@ -17,3 +17,18 @@
     color: $blue;
 }
 
+#kite{
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-name: sBote;
+    animation-iteration-count:infinite;
+  }
+  
+  @keyframes sBote{
+    from{
+      margin-left: 0px;
+    }
+    to{
+      margin-right: 15px;
+    }
+  }

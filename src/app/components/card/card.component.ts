@@ -47,7 +47,6 @@ export class CardComponent implements OnInit {
     } else {
       result = this.pointsToChange - cost;
       this.integrationService.emitUserPoints$(result);
-      console.log(result);
     }
     this.productService.postProducts(bodyPost).subscribe((msg) => {
       this.message = msg.message;
