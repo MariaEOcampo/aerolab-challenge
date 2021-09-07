@@ -1,0 +1,19 @@
+@import '../../../assets/styles/variables';
+.point-modal__container{
+    width: 320px;
+    height: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+}
+
+.btn-close{
+    margin-left: 100%;
+}
+
+.btn-secondary:hover{
+    transition: transform .3s ease;
+    background: hsl(200 100% 80%);
+    color: $blue;
+}
+

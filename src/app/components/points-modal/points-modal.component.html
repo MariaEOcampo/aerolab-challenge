@@ -1,4 +1,4 @@
-<div>
+<div class="point-modal__container">
   <button
     type="button"
     class="btn-close"
@@ -6,12 +6,47 @@
     aria-label="Close"
     (click)="hideModal()"
   ></button>
-  <h2>Get more points now, pay by card later</h2>
+  <h5>Get more points now, pay later!</h5>
   <button
-    class="btn"
+    class="btn btn-secondary my-3 mx-1"
     (click)="getCoins(value)"
     *ngFor="let value of pointsToBuy"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
   >
     {{ value }}<span><img src="./assets/coin.svg" alt="" /></span>
   </button>
+</div>
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" *ngIf="hideModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Successful purchase!
+        </h5>
+      </div>
+      <div class="modal-body text-center">
+        <img src="./assets/AeroOK.png" alt="" />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

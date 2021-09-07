@@ -14,6 +14,7 @@ import { PointsModalComponent } from '../../components/points-modal/points-modal
 export class HomeComponent implements OnInit {
   public products: Product[] = [];
   public pointsToBuy: number[] = [1000, 5000, 7500];
+  public actualPage: number = 1;
 
   constructor(
     private productsService: ProductsService,

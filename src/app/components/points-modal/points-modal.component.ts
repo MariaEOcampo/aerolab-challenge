@@ -12,6 +12,7 @@ import { IntegrationService } from 'src/app/services/integration.service';
 export class PointsModalComponent implements OnInit {
   public pointsToBuy!: number[];
   public userPoints$!: Observable<number>;
+  public successPoints: boolean = false;
 
   constructor(
     private modalService: BsModalService,
@@ -30,6 +31,7 @@ export class PointsModalComponent implements OnInit {
     this.coinsService.postPoints(points).subscribe((resp) => {
       (newPoints = resp['New Points']),
         this.integrationService.emitUserPoints$(newPoints);
+      this.successPoints = true;
     });
   }
 

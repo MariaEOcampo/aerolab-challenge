@@ -10,11 +10,15 @@
         <div class="card__header-text">
           <h3 class="card__title">{{ card.name }}</h3>
           <span class="card__status">{{ card.cost }}</span>
+          <span class="mx-1"><img src="./assets/coin.svg" /></span>
         </div>
       </div>
       <div class="button__div">
-        <button class="btn btn-primary" (click)="redeem(card.cost, card._id)">
-          Redeem!
+        <button
+          class="btn btn-primary mt-1"
+          (click)="redeem(card.cost, card._id)"
+        >
+          Redeem now!
         </button>
       </div>
     </div>

@@ -1,3 +1,4 @@
+@import '../../../assets/styles/variables';
 .card-container{
     justify-content: center;
 display: flex;
@@ -9,4 +10,33 @@ flex-wrap:wrap;
 .buttons-container{
     display: flex;
     justify-content: space-between;
+}
+
+.pagination{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-primary{
+    background-color:$light-blue!important;
+    border: 1px solid $light-blue;
+    color:$blue;
+    font-weight: 600;
+}
+
+span{
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-left: 3rem;
+    margin-right: 1rem;
+
+}
+
+.get-btn{
+    width: 200px;
+    background-color: $yellow!important;
+    color:$blue;
+    font-weight: 600;
+    font-size: 1.6rem;
+
 }

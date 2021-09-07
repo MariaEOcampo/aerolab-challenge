@@ -7,13 +7,14 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-  listOfRedeem!: [];
+  public listOfRedeem!: [];
+  public actualPage: number = 1;
 
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.productService
       .getHistoryProducts()
-      .subscribe((data) => console.log('history', data));
+      .subscribe((redeems) => (this.listOfRedeem = redeems));
   }
 }

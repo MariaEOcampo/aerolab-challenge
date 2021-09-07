@@ -10,9 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { PointsModalComponent } from './components/points-modal/points-modal.component';
 import { HistoryCardComponent } from './components/history-card/history-card.component';
+import { RedeemModalComponent } from './components/redeem-modal/redeem-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HistoryCardComponent } from './components/history-card/history-card.com
     CardComponent,
 
     PointsModalComponent,
-     HistoryCardComponent,
+    HistoryCardComponent,
+    RedeemModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { HistoryCardComponent } from './components/history-card/history-card.com
     HttpClientModule,
     SharedModule,
     ModalModule.forRoot(),
+    NgxPaginationModule,
   ],
   providers: [BsModalRef],
   bootstrap: [AppComponent],

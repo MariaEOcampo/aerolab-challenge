@@ -1,10 +1,17 @@
-<div class="history-container">
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
-  <app-history-card></app-history-card>
+<div class="pagination">
+  <pagination-controls
+    (pageChange)="actualPage = $event"
+    class="mt-5"
+  ></pagination-controls>
+</div>
+
+<div class="history-container mx-2">
+  <app-history-card
+    class="mx-2 my-3"
+    *ngFor="
+      let redeem of listOfRedeem
+        | paginate: { itemsPerPage: 16, currentPage: actualPage }
+    "
+    [redeem]="redeem"
+  ></app-history-card>
 </div>
