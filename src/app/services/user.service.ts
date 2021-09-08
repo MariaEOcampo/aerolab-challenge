@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
-import { header } from './config/config.api';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +15,19 @@ export class UserService {
 
   getQuery(query: string) {
     const url = `${this.baseUrl}${query}`;
-    const headers = header;
-    return this.http.get(url, { headers });
+    return this.http.get(url);
   }
 
   getUser(): Observable<User> {
     return this.getQuery('/user/me').pipe(
-      map((data: any) => {
-        return data;
-      })
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
     );
   }
 }

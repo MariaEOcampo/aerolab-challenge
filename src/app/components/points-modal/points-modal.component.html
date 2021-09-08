@@ -13,6 +13,7 @@
     *ngFor="let value of pointsToBuy"
     data-bs-toggle="modal"
     data-bs-target="#staticBackdrop"
+    [disabled]="errorService"
   >
     {{ value }}<span><img src="./assets/coin.svg" alt="" /></span>
   </button>

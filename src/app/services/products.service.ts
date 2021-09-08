@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Product } from '../interfaces/product.interface';
-import { header } from './config/config.api';
 
 @Injectable({
   providedIn: 'root',
@@ -15,45 +14,59 @@ export class ProductsService {
 
   getQuery(query: string) {
     const url = `${this.baseUrl}${query}`;
-    const headers = header;
-    return this.http.get(url, { headers });
+    return this.http.get(url);
   }
 
   postQuery(query: string, body: any) {
     const url = `${this.baseUrl}${query}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTMxOWVlNWE5MDUzOTAwMjFiNzBiMjIiLCJpYXQiOjE2MzA2NDE4OTR9.axNieH2FmX1CVjccsGZTecOnfAR7oy2-5nYmy1qjmWw',
-    });
-    return this.http.post(url, body, { headers });
+    return this.http.post(url, body).pipe(
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
+    );
   }
 
   getProducts(): Observable<Product[]> {
     return this.getQuery('/products').pipe(
-      map((data: any) => {
-        return data;
-      })
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
     );
   }
 
   postProducts(id: any): Observable<any> {
     return this.postQuery('/redeem', id).pipe(
-      map((data: any) => {
-        return data;
-      }),
-      catchError((e) => {
-        return e;
-      })
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
     );
   }
 
   getHistoryProducts(): Observable<any> {
     return this.getQuery('/user/history').pipe(
-      map((data: any) => {
-        return data;
-      })
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
     );
   }
 }

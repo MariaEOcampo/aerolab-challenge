@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { header } from './config/config.api';
 
 @Injectable({
   providedIn: 'root',
@@ -14,18 +13,19 @@ export class CoinsService {
 
   postQuery(query: string, body: any) {
     const url = `${this.baseUrl}${query}`;
-    const headers = header;
-    return this.http.post(url, body, { headers });
+    return this.http.post(url, body);
   }
 
   postPoints(value: any): Observable<any> {
     return this.postQuery('/user/points', value).pipe(
-      map((data: any) => {
-        return data;
-      }),
-      catchError((e) => {
-        return e;
-      })
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      )
     );
   }
 }

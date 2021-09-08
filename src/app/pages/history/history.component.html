@@ -1,11 +1,15 @@
-<div class="pagination">
+<div class="mt-5">
+  <app-empty-state [hidden]="!errorService"></app-empty-state>
+</div>
+
+<div class="pagination" *ngIf="!errorService">
   <pagination-controls
     (pageChange)="actualPage = $event"
     class="mt-5"
   ></pagination-controls>
 </div>
 
-<div class="history-container mx-2">
+<div class="history-container mx-2" *ngIf="!errorService">
   <app-history-card
     class="mx-2 my-3"
     *ngFor="

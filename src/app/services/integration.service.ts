@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class IntegrationService {
   private userPoints$ = new BehaviorSubject<number>(0);
+
   constructor() {}
 
   getUserPoints$() {

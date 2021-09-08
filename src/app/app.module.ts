@@ -8,13 +8,15 @@ import { HistoryComponent } from './pages/history/history.component';
 import { HeaderComponent } from './pages/components/header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { CardComponent } from './components/card/card.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { PointsModalComponent } from './components/points-modal/points-modal.component';
 import { HistoryCardComponent } from './components/history-card/history-card.component';
 import { RedeemModalComponent } from './components/redeem-modal/redeem-modal.component';
+import { InterceptorService } from './interceptors/interceptor.service';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { RedeemModalComponent } from './components/redeem-modal/redeem-modal.com
     PointsModalComponent,
     HistoryCardComponent,
     RedeemModalComponent,
+    EmptyStateComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,10 @@ import { RedeemModalComponent } from './components/redeem-modal/redeem-modal.com
     ModalModule.forRoot(),
     NgxPaginationModule,
   ],
-  providers: [BsModalRef],
+  providers: [
+    BsModalRef,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

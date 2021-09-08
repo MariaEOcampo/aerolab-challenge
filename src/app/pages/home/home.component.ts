@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
-import { IntegrationService } from '../../services/integration.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { PointsModalComponent } from '../../components/points-modal/points-modal.component';
 
@@ -15,6 +14,7 @@ export class HomeComponent implements OnInit {
   public products: Product[] = [];
   public pointsToBuy: number[] = [1000, 5000, 7500];
   public actualPage: number = 1;
+  public errorService!: boolean;
 
   constructor(
     private productsService: ProductsService,
@@ -23,9 +23,16 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe((productsResponse) => {
-      this.products = productsResponse;
-    });
+    this.errorService = false;
+    this.productsService.getProducts().subscribe(
+      (productsResponse) => {
+        this.products = productsResponse;
+      },
+      (err) => {
+        this.errorService = true;
+        return throwError(err);
+      }
+    );
   }
 
   showMostrecent() {

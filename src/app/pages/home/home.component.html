@@ -1,5 +1,8 @@
 <app-header></app-header>
-<div class="buttons-container">
+<div class="mt-5">
+  <app-empty-state [hidden]="!errorService"></app-empty-state>
+</div>
+<div class="buttons-container" *ngIf="!errorService">
   <div>
     <span>Sort by</span>
     <button class="btn btn-primary mx-2 my-3" (click)="showMostrecent()">
@@ -19,7 +22,7 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-<div class="pagination mt-5">
+<div class="pagination mt-5" *ngIf="!errorService">
   <pagination-controls (pageChange)="actualPage = $event"></pagination-controls>
 </div>
 <div class="card-container">
